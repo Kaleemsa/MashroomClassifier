@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
 # Load the trained model
-model_path = "decissiontree.pkl"
+model_path = "classifier.pkl"
 with open(model_path, "rb") as f:
     model = pickle.load(f)
 
