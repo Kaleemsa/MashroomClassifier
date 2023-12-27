@@ -14,6 +14,8 @@ class LabelEncoderTransformer(BaseEstimator, TransformerMixin):
     def transform(self, X):
         return X.apply(LabelEncoder().fit_transform)
 
+
+
 # Load the trained model & preprocessing Steps
  
 loaded_le_model=pickle.load(open('LE_MODEL.pkl', 'rb'))
@@ -23,6 +25,13 @@ loaded_pca_fit=pickle.load(open('PCA_MODEL.pkl', 'rb'))
 loaded_rf_model=pickle.load(open('RF_MODEL.PKL', 'rb'))
 
 # Define the mushroom classes
+
+features=['cap-shape', 'cap-surface', 'cap-color', 'bruises', 'odor',
+       'gill-attachment', 'gill-spacing', 'gill-size', 'gill-color',
+       'stalk-shape', 'stalk-root', 'stalk-surface-above-ring',
+       'stalk-surface-below-ring', 'stalk-color-above-ring',
+       'stalk-color-below-ring', 'veil-type', 'veil-color', 'ring-number',
+       'ring-type', 'spore-print-color', 'population', 'habitat']
 classes = ["edible", "poisonous"]
 
 # Define the Streamlit app
@@ -45,7 +54,7 @@ def main():
 
     # Prepare the input features
     features = np.array([gc, spc, p, gs, o, b, ss, scar, sr])
-    df = pd.DataFrame([features])
+    df = pd.DataFrame([features],columns=features)
 
     # Make predictions
     prediction = loaded_rf_model.predict(loaded_pca_fit.transform(loaded_le_model.transform(df.head(1))))
