@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # Load the trained model & preprocessing Steps
  
-loaded_le_model=pickle.load(open('LE_MODEL.PKL', 'rb'))
+loaded_le_model=pickle.load(open('LE_MODEL.pkl', 'rb'))
 
 loaded_pca_fit=pickle.load(open('PCA_MODEL.pkl', 'rb'))
 
