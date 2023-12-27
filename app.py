@@ -32,7 +32,7 @@ features=['cap-shape', 'cap-surface', 'cap-color', 'bruises', 'odor',
        'stalk-surface-below-ring', 'stalk-color-above-ring',
        'stalk-color-below-ring', 'veil-type', 'veil-color', 'ring-number',
        'ring-type', 'spore-print-color', 'population', 'habitat']
-classes = ["edible", "poisonous"]
+classes = {'e':"edible",'p' :"poisonous"}
 
 # Define the Streamlit app
 def main():
@@ -96,7 +96,7 @@ def main():
         prediction = loaded_rf_model.predict(loaded_pca_fit.transform(loaded_le_model.transform(df.head(1))))
     
         # Display the prediction
-        st.write("Prediction:", classes[prediction[0]])
+        st.write("Prediction:", classes.get(prediction[0]))
 
 if __name__ == "__main__":
     main()
