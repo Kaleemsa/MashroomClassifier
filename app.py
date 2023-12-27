@@ -81,7 +81,7 @@ def main():
     selection_list=[]
     # Generate Streamlit dropdowns and output as valid Python code
     for key, values in data.items():
-        selection_list.append(st.selectbox(key=key,label=f'Select {key}',options=values)
+        selection_list.append(st.selectbox(key=key,label=f'Select {key}',options=values))
 
     # Add more features here...
 
