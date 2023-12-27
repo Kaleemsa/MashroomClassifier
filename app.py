@@ -80,13 +80,12 @@ def main():
     }
 
     def zipper(key,value):
-        print(labels.get(key))
-        return dict(zip(*labels.get(key)[0],*labels.get(key)[1])).get(value)
+        return dict(zip(*labels.get(key))).get(value)
 
     selection_list=[]
     # Generate Streamlit dropdowns and output as valid Python code
     for key, values in labels.items():
-        selection_list.append(st.selectbox(key=key,label=f'Select {key}',options=values,format_func=lambda x: zipper(key,x)))
+        selection_list.append(st.selectbox(key=key,label=f'Select {key}',options=values,format_func=lambda x, key=key: zipper(key,x)))
 
     # Add more features here...
 
