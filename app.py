@@ -5,6 +5,15 @@ import pandas as pd
 
 from sklearn.preprocessing import LabelEncoder
 
+from sklearn.base import BaseEstimator, TransformerMixin
+
+class LabelEncoderTransformer(BaseEstimator, TransformerMixin):
+    def fit(self, X, y=None):
+        return self
+    
+    def transform(self, X):
+        return X.apply(LabelEncoder().fit_transform)
+
 # Load the trained model & preprocessing Steps
  
 loaded_le_model=pickle.load(open('LE_MODEL.pkl', 'rb'))
