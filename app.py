@@ -80,7 +80,8 @@ def main():
     }
 
     def zipper(key,value):
-        return dict(zip(*labels.get(key))).get(value)
+        print(labels.get(key))
+        return dict(zip(**labels.get(key))).get(value)
 
     selection_list=[]
     # Generate Streamlit dropdowns and output as valid Python code
