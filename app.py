@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # Load the trained model
 model_path = "decision_tree.pkl"
-pca_path = 'pca_fit'
+pca_path = 'pca_fit.pkl'
  
 loaded_dt1_model=pickle.load(open(model_path, 'rb'))
 
