@@ -79,8 +79,8 @@ def main():
         'habitat': [['u', 'g', 'm', 'd', 'p', 'w', 'l'], ['Urban', 'Grasses', 'Meadows', 'Woods', 'Paths', 'Waste', 'Leaves']]
     }
 
-    def zipper(key,values):    
-        return [dict(zip(*labels.get(key))).get(value) for value in values]
+    def zipper(key,value):    
+        return dict(zip(*labels.get(key))).get(value)
 
     selection_list=[]
     # Generate Streamlit dropdowns and output as valid Python code
