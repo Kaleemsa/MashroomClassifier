@@ -54,34 +54,38 @@ def main():
     # yes sir data read kia tha or waha sa mja pata chala tha ya color ha
     # Black to Letter Mapping kaha se li? ya nae ha?
     
-    data = {
-    'cap-shape': ['x', 'b', 's', 'f', 'k', 'c'],
-    'cap-surface': ['s', 'y', 'f', 'g'],
-    'cap-color': ['n', 'y', 'w', 'g', 'e', 'p', 'b', 'u', 'c', 'r'],
-    'bruises': ['t', 'f'],
-    'odor': ['p', 'a', 'l', 'n', 'f', 'c', 'y', 's', 'm'],
-    'gill-attachment': ['f', 'a'],
-    'gill-spacing': ['c', 'w'],
-    'gill-size': ['n', 'b'],
-    'gill-color': ['k', 'n', 'g', 'p', 'w', 'h', 'u', 'e', 'b', 'r', 'y', 'o'],
-    'stalk-shape': ['e', 't'],
-    'stalk-root': ['e', 'c', 'b', 'r', '?'],
-    'stalk-surface-above-ring': ['s', 'f', 'k', 'y'],
-    'stalk-surface-below-ring': ['s', 'f', 'y', 'k'],
-    'stalk-color-above-ring': ['w', 'g', 'p', 'n', 'b', 'e', 'o', 'c', 'y'],
-    'stalk-color-below-ring': ['w', 'p', 'g', 'b', 'n', 'e', 'y', 'o', 'c'],
-    'veil-type': ['p'],
-    'veil-color': ['w', 'n', 'o', 'y'],
-    'ring-number': ['o', 't', 'n'],
-    'ring-type': ['p', 'e', 'l', 'f', 'n'],
-    'spore-print-color': ['k', 'n', 'u', 'h', 'w', 'r', 'o', 'y', 'b'],
-    'population': ['s', 'n', 'a', 'v', 'y', 'c'],
-    'habitat': ['u', 'g', 'm', 'd', 'p', 'w', 'l']
-}
+    labels = {
+        'cap-shape': [['x', 'b', 's', 'f', 'k', 'c'], ['Convex', 'Bell', 'Sunken', 'Flat', 'Knobbed', 'Conical']],
+        'cap-surface': [['s', 'y', 'f', 'g'], ['Smooth', 'Scaly', 'Fibrous', 'Grooves']],
+        'cap-color': [['n', 'y', 'w', 'g', 'e', 'p', 'b', 'u', 'c', 'r'], ['Brown', 'Yellow', 'White', 'Gray', 'Red', 'Pink', 'Buff', 'Purple', 'Cinnamon', 'Green']],
+        'bruises': [['t', 'f'], ['True', 'False']],
+        'odor': [['p', 'a', 'l', 'n', 'f', 'c', 'y', 's', 'm'], ['Pungent', 'Almond', 'Anise', 'None', 'Foul', 'Creosote', 'Fishy', 'Spicy', 'Musty']],
+        'gill-attachment': [['f', 'a'], ['Free', 'Attached']],
+        'gill-spacing': [['c', 'w'], ['Close', 'Crowded']],
+        'gill-size': [['n', 'b'], ['Narrow', 'Broad']],
+        'gill-color': [['k', 'n', 'g', 'p', 'w', 'h', 'u', 'e', 'b', 'r', 'y', 'o'], ['Black', 'Brown', 'Gray', 'Pink', 'White', 'Chocolate', 'Purple', 'Buff', 'Green', 'Red', 'Yellow', 'Orange']],
+        'stalk-shape': [['e', 't'], ['Enlarging', 'Tapering']],
+        'stalk-root': [['e', 'c', 'b', 'r', '?'], ['Equal', 'Club', 'Bulbous', 'Rooted', 'Missing']],
+        'stalk-surface-above-ring': [['s', 'f', 'k', 'y'], ['Smooth', 'Fibrous', 'Silky', 'Scaly']],
+        'stalk-surface-below-ring': [['s', 'f', 'y', 'k'], ['Smooth', 'Fibrous', 'Scaly', 'Silky']],
+        'stalk-color-above-ring': [['w', 'g', 'p', 'n', 'b', 'e', 'o', 'c', 'y'], ['White', 'Gray', 'Pink', 'Brown', 'Buff', 'Cinnamon', 'Orange', 'Chocolate', 'Yellow']],
+        'stalk-color-below-ring': [['w', 'p', 'g', 'b', 'n', 'e', 'y', 'o', 'c'], ['White', 'Pink', 'Gray', 'Buff', 'Brown', 'Cinnamon', 'Yellow', 'Orange', 'Chocolate']],
+        'veil-type': [['p'], ['Partial']],
+        'veil-color': [['w', 'n', 'o', 'y'], ['White', 'Brown', 'Orange', 'Yellow']],
+        'ring-number': [['o', 't', 'n'], ['One', 'Two', 'None']],
+        'ring-type': [['p', 'e', 'l', 'f', 'n'], ['Pendant', 'Evanescent', 'Large', 'Flaring', 'None']],
+        'spore-print-color': [['k', 'n', 'u', 'h', 'w', 'r', 'o', 'y', 'b'], ['Black', 'Brown', 'Buff', 'Chocolate', 'White', 'Green', 'Orange', 'Yellow', 'Purple']],
+        'population': [['s', 'n', 'a', 'v', 'y', 'c'], ['Several', 'Solitary', 'Abundant', 'Numerous', 'Clustered']],
+        'habitat': [['u', 'g', 'm', 'd', 'p', 'w', 'l'], ['Urban', 'Grasses', 'Meadows', 'Woods', 'Paths', 'Waste', 'Leaves']]
+    }
+
+    def zipper(LOL):
+        return zip(LOL[0],LOL[1])
+
     selection_list=[]
     # Generate Streamlit dropdowns and output as valid Python code
-    for key, values in data.items():
-        selection_list.append(st.selectbox(key=key,label=f'Select {key}',options=values))
+    for key, values in labels.items():
+        selection_list.append(st.selectbox(key=key,label=f'Select {key}',options=values,format_func=lambda x: zipper(labels.get(key)).get(x)))
 
     # Add more features here...
 
