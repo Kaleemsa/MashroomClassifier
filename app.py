@@ -81,7 +81,7 @@ def main():
 
     def zipper(key,values):
         
-        st.write([dict(zip(*labels.get(key))).get(value) in values])          
+        st.write([dict(zip(*labels.get(key))).get(value) for value in values])          
         return None 
 
     selection_list=[]
