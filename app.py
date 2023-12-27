@@ -58,11 +58,12 @@ def main():
 
     st.write(df)
 
-    # Make predictions
-    prediction = loaded_rf_model.predict(loaded_pca_fit.transform(loaded_le_model.transform(df.head(1))))
-
-    # Display the prediction
-    st.write("Prediction:", classes[prediction[0]])
+    if st.button('Predict'):   
+        # Make predictions
+        prediction = loaded_rf_model.predict(loaded_pca_fit.transform(loaded_le_model.transform(df.head(1))))
+    
+        # Display the prediction
+        st.write("Prediction:", classes[prediction[0]])
 
 if __name__ == "__main__":
     main()
