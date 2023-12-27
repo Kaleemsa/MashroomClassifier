@@ -5,13 +5,13 @@ import pandas as pd
 
 from sklearn.preprocessing import LabelEncoder
 
-# Load the trained model
-model_path = "decision_tree.pkl"
-pca_path = 'pca_fit.pkl'
+# Load the trained model & preprocessing Steps
  
-loaded_dt1_model=pickle.load(open(model_path, 'rb'))
+loaded_le_model=pickle.load(open('LE_MODEL.PKL', 'rb'))
 
-loaded_pca_fit=pickle.load(open(pca_path, 'rb'))
+loaded_pca_fit=pickle.load(open('PCA_MODEL.pkl', 'rb'))
+
+loaded_rf_model=pickle.load(open('RF_MODEL.PKL', 'rb'))
 
 # Define the mushroom classes
 classes = ["edible", "poisonous"]
@@ -38,14 +38,8 @@ def main():
     features = np.array([gc, spc, p, gs, o, b, ss, scar, sr])
     df = pd.DataFrame([features])
 
-    label = LabelEncoder()
-    for col in df.columns:
-        df[col] = label.fit_transform(df[col])
-        
-
-
     # Make predictions
-    prediction = loaded_dt1_model.predict(df)
+    prediction = loaded_rf_model.predict(loaded_pca_fit.transform(loaded_le_model.transform(df.head(1))))
 
     # Display the prediction
     st.write("Prediction:", classes[prediction[0]])
