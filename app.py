@@ -80,7 +80,7 @@ def main():
     }
 
     def zipper(key,values):
-        st.write(key,values)
+        st.write(key,values.values)
         return dict(zip(*labels.get(key))).get(value)
 
     selection_list=[]
