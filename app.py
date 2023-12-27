@@ -54,7 +54,7 @@ def main():
 
     # Prepare the input features
     features = np.array([gc, spc, p, gs, o, b, ss, scar, sr])
-    df = pd.DataFrame([features],columns=features)
+    df = pd.DataFrame(features,columns=features)
 
     st.write(df)
 
