@@ -53,7 +53,7 @@ def main():
     # Add more features here...
 
     # Prepare the input features
-    feature_val = [gc, spc, p, gs, o, b, ss, scar, sr]
+    feature_val = [[gc, spc, p, gs, o, b, ss, scar, sr]]
     df = pd.DataFrame(feature_val,columns=features)
 
     st.write(df)
