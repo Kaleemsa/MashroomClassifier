@@ -56,6 +56,8 @@ def main():
     features = np.array([gc, spc, p, gs, o, b, ss, scar, sr])
     df = pd.DataFrame([features],columns=features)
 
+    st.write(df)
+
     # Make predictions
     prediction = loaded_rf_model.predict(loaded_pca_fit.transform(loaded_le_model.transform(df.head(1))))
 
