@@ -39,21 +39,7 @@ def main():
     st.title("Mushroom Classification")
     st.write("This app classifies mushrooms as edible or poisonous.")
 
-    # # Gather user input
-    # gc = st.selectbox("select gill color", ["black", "brown", "buff", "chocolate", "gray", "green", "orange", "pink", "purple", "red", "white", "yellow"])
-    # spc = st.selectbox("spore print color", ["black", "brown", "buff", "chocolate", "green", "orange", "purple", "white", "yellow"])
-    # p = st.selectbox("population", ["abundant", "clustered", "numerous", "scattered", "several", "solitary"])
-    # gs = st.selectbox("gill size", ["broad", "narrow"])
-    # o = st.selectbox("odor", ["almond", "anise", "creosote", "fishy", "foul", "musty", "none", "pungent", "spicy"])
-    # b = st.selectbox("bruises", ["bruises", "no"])
-    # ss = st.selectbox("stalk shape", ["enlarging", "tapering"])
-    # scar = st.selectbox("stalk color above ring", ["brown", "buff", "cinnamon", "gray", "orange", "pink", "red", "white", "yellow"])
-    # sr = st.selectbox("stalk root", ["bulbous", "club", "cup", "equal", "rhizomorphs", "rooted", "missing"])
-    # sr = st.selectbox("stalk root", ["bulbous", "club", "cup", "equal", "rhizomorphs", "rooted", "missing"])
-    # ye apne Black Brown ye kaha se dala? DAta mein tou E d h
-    # yes sir data read kia tha or waha sa mja pata chala tha ya color ha
-    # Black to Letter Mapping kaha se li? ya nae ha?
-    
+ 
     labels = {
         'cap-shape': [['x', 'b', 's', 'f', 'k', 'c'], ['Convex', 'Bell', 'Sunken', 'Flat', 'Knobbed', 'Conical']],
         'cap-surface': [['s', 'y', 'f', 'g'], ['Smooth', 'Scaly', 'Fibrous', 'Grooves']],
